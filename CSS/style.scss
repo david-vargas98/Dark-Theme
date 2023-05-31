@@ -1,0 +1,87 @@
+//Se le da formato a toda la página con un selector genérico *
+*{
+    //Como no se usa letras, solo se formate lo siguiente:
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+//Se le da estilo al cuerpo
+body{
+    background: #2b2b2b;
+    //Se le dice que sus hijos serán flexibles
+    display: flex;
+    //Y se justifica y alinea su contenido
+    justify-content: center; //izq a der
+    align-items: center; //arriba a abajo
+    //Se pide que se comporte como una sola columna
+    flex-direction: column;
+    //Se le pide que la altura se adapte al navegador
+    min-height: 100vh;
+    //Se le añade una transición para evitar cambios bruscos
+    transition: 0.5s;
+
+    //Cuando se active el método toggle de JS, que será cuando se haga click
+    &.active{
+        //Se le cambiará el fondo
+        background: #f8f8f8;
+    }
+}
+//Se el da estilos al toggle, para id's se usa # + nombre
+#toggle{
+    //Se le cambia la posición
+    position: relative;
+    //Que sea como un bloque
+    display: block;
+    //Se define un ancho y un alto
+    width: 320px;
+    height: 160px;
+    //Se le da un radio de borde
+    border-radius: 160px;
+    //Se cambia el fondo
+    background: #222;
+    //Se le da transición para que no sea brusco el cambio
+    transition: 0.5s;
+    //Se mejora la apariencia usando box-shadows, inset (sombra hacia dentro), cada parámetro es una sombre, hay 3 sombras.
+    box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1), inset 0 8px 8px rgba(0, 0, 0, 0.1), inset 0 -4px -4px rgba(0, 0, 0, 0.1);
+    //Ahora, se trabaja la parte interna, es decir, el decorador "indicator"
+    //Es la bolita que va estar en el centro, la que indica si se está en black or white
+    .indicator{
+        //Se le dice que su posición sea absoluta porque su padre es relativo
+        position: absolute;
+        //Posición de arriba e izquierda se le dice que cero
+        top: 0;
+        left: 0;
+        //Se le da un ancho y alto, para que sea circunferencia se le debe dar la misma
+        width: 160px;
+        height: 160px;
+        //Se le da la mitad del borde para que sea la circunferencia
+        border-radius: 50%;
+        //Al fondo se le da un color gradiente (borrosito), el primer parámetro dice desde donde va arrancar el grandiente, en este caso, desde bottom, abajo.
+        background: linear-gradient(to bottom, #444, #222);
+        //Se le da un cambio al cursor
+        cursor: pointer;
+        //Se le da escala porque está muy grande
+        transform: scale(0.9);
+        //Se mejora la apariencia usando box-shadows, inset (sombra hacia dentro), cada parámetro es una sombre, hay 3 sombras.
+        box-shadow: inset 0 8px 40px rgba(0, 0, 0, 0.5), inset 0 4px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 4px rgba(255, 255, 255, 0.2);
+        //Al cambiar los colores se le dice que ocurra en una transición
+        transition: 0.5s;
+    }
+    //Cuando se active el método toggle de JS, que será cuando se haga click
+    &.active{
+        //Se cambia el fondo
+        background: #ffffff;
+        //Al igual que se cambia las sombras
+        box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1), inset 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 -4px 8px rgba(0, 0, 0, 0.05);
+        //Ahora, tamboén se quqiere un comportamiento dentro del indicador en el tema blanco
+        .indicator{
+            //Para que se traslade el indicador de la izq a la der se usa left, es decir, desde la izquierda se va trasladar 160px
+            left: 160px;
+            //Al igual que se cambia las sombras
+            box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.1), inset 0 4px 4px rgba(255, 255, 255, 1), inset 0 -4px 4px rgba(255, 255, 255, 1);
+            //También se le cambia el fondo
+            background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+            
+        }
+    }
+}
